@@ -850,6 +850,10 @@ tbody tr:last-child td { border-bottom: none; }
 <!-- TOASTS -->
 <div id="toasts"></div>
 
+<div style="text-align:center;padding:16px 24px;font-size:11px;color:#94a3b8;font-family:'DM Sans',sans-serif;margin-top:8px;">
+  Desenvolvido por <strong style="color:#475569;">Antonio</strong> · BrasilCard
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════
 // ESTADO GLOBAL
@@ -1694,11 +1698,11 @@ window.renderDashboard = function() {
 
   // Gráfico por designer
   const allUsers = [...new Set([...S.designers, ...S.responsaveis])];
-  const designerData = allUsers.map(d=>allTasks.filter(t=>(t.designer||t.responsavel)===d).length);
-  const barColors = allUsers.map(d=>S.coresUsuario[d]||'#64748b');
+  const designerData = S.designers.map(d=>allTasks.filter(t=>t.designer===d).length);
+  const barColors = S.designers.map(d=>S.coresUsuario[d]||'#64748b');
   buildChart('chartDesigner',S,'chartDesigner',{
     type:'bar',
-    data:{ labels:allUsers, datasets:[{label:'Peças',data:designerData, backgroundColor:barColors, borderRadius:8, borderSkipped:false}]},
+    data:{ labels:S.designers, datasets:[{label:'Peças',data:designerData, backgroundColor:barColors, borderRadius:8, borderSkipped:false}]},
     options:{ plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,grid:{color:'#f1f5f9'}}}}
   });
 
@@ -1728,7 +1732,7 @@ window.renderDashboard = function() {
 
   // Tabela designers
   const tbody=document.getElementById('dash_tbody');
-  tbody.innerHTML=allUsers.map(d=>{
+  tbody.innerHTML=S.designers.map(d=>{
     const com=S.comercial.filter(inMes).filter(t=>t.designer===d).length;
     const prv=S.private.filter(inMes).filter(t=>t.designer===d).length;
     const rh=S.rh.filter(inMes).filter(t=>t.responsavel===d).length;
