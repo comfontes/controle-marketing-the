@@ -245,6 +245,88 @@ h3 { letter-spacing: -0.01em; }
 .charts-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 @media(max-width:900px) { .charts-row { grid-template-columns: 1fr; } }
 
+/* ── Planner / Calendário ── */
+.cal-nav { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.cal-nav h2 { font-size:18px; font-weight:700; color:var(--brand); letter-spacing:-.02em; }
+.nbtn { border:1.5px solid var(--brand); background:#fff; border-radius:8px; padding:5px 16px; cursor:pointer; font-size:18px; color:var(--brand); transition:all .15s; }
+.nbtn:hover { background:var(--brand); color:#fff; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; }
+.clbl { text-align:center; font-size:11px; font-weight:700; color:var(--brand); padding:8px 0; text-transform:uppercase; letter-spacing:0.8px; }
+.cday { min-height:76px; border:1.5px solid var(--gray-200); border-radius:10px; padding:8px; cursor:pointer; background:#fff; transition:all .15s; }
+.cday:hover { border-color:var(--brand); transform:translateY(-1px); box-shadow:0 3px 10px rgba(0,74,153,.1); }
+.cday.empty { background:transparent; border-color:transparent; cursor:default; pointer-events:none; }
+.cday.today { border-color:var(--brand); border-width:2px; }
+.cday.sel { border-color:var(--accent); border-width:2px; background:#fffbea; box-shadow:0 0 0 3px rgba(245,196,0,.2); }
+.dnum { font-size:13px; font-weight:700; color:var(--gray-800); width:26px; height:26px; display:flex; align-items:center; justify-content:center; border-radius:50%; }
+.cday.today .dnum { background:var(--brand); color:#fff; }
+.ppills { display:flex; flex-direction:column; gap:2px; margin-top:4px; }
+.ppill { font-size:10px; font-weight:600; padding:2px 6px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mpill { font-size:10px; color:var(--gray-400); padding:1px 5px; }
+.pw { background:#dcfce7; color:#166534; }
+.pi { background:#fce7f3; color:#831843; }
+.pe { background:#fef3c7; color:#92400e; }
+.ps { background:#ede9fe; color:#4c1d95; }
+.po { background:var(--brand-l); color:var(--brand); }
+.st-agendada { background:#bfdbfe; color:#1e3a8a; }
+.st-publicada { background:#bbf7d0; color:#14532d; }
+.st-ajuste { background:#fde68a; color:#78350f; }
+.st-substituida { background:#e9d5ff; color:#581c87; }
+.sbadge { font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; }
+.legend { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; }
+.legend-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--gray-600); font-weight:500; }
+.ldot { width:8px; height:8px; border-radius:50%; }
+.legend-label { font-size:11px; font-weight:700; color:var(--gray-400); margin-right:2px; }
+.panel { border:2px solid var(--gray-200); border-radius:16px; padding:24px; margin-top:18px; background:#fff; box-shadow:0 4px 20px rgba(0,74,153,.07); }
+.ph { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding-bottom:14px; border-bottom:1.5px solid var(--gray-100); }
+.ph h3 { font-size:16px; font-weight:700; color:var(--brand); }
+.xbtn { border:none; background:transparent; cursor:pointer; font-size:20px; color:var(--gray-400); width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; }
+.xbtn:hover { background:var(--gray-100); }
+.psync { font-size:11px; color:var(--gray-400); display:flex; align-items:center; gap:6px; margin-bottom:12px; }
+.sdot { width:8px; height:8px; border-radius:50%; background:#22c55e; }
+@keyframes pu { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.plist { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+.pcard { border:1.5px solid var(--gray-200); border-radius:12px; padding:14px; background:var(--gray-50); }
+.pcard-h { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.ptitle { font-size:14px; font-weight:700; color:var(--brand); }
+.bdg { font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.bw{background:#dcfce7;color:#166534;}.bi{background:#fce7f3;color:#831843;}
+.be{background:#fef3c7;color:#92400e;}.bs{background:#ede9fe;color:#4c1d95;}
+.bo{background:var(--brand-l);color:var(--brand);}
+.capbox { background:#fff; border:1px solid var(--gray-200); border-radius:8px; padding:12px; font-size:13px; color:#444; line-height:1.7; white-space:pre-wrap; word-break:break-word; max-height:150px; overflow-y:auto; margin-bottom:10px; }
+.pimg-wrap { margin-bottom:10px; }
+.pimg-wrap img { width:100%; max-height:300px; object-fit:contain; border-radius:10px; display:block; background:var(--gray-100); }
+.dl-btn { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:5px 12px; border-radius:8px; border:1.5px solid var(--brand); color:var(--brand); cursor:pointer; background:#fff; text-decoration:none; margin-bottom:8px; }
+.dl-btn:hover { background:var(--brand-l); }
+.pacts { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.abtn { font-size:12px; font-weight:600; padding:5px 12px; border-radius:8px; border:1.5px solid var(--gray-200); cursor:pointer; background:#fff; color:#444; }
+.abtn.copy { border-color:var(--brand); color:var(--brand); }
+.abtn.copy:hover { background:var(--brand-l); }
+.abtn.del { border-color:#fca5a5; color:#b91c1c; }
+.abtn.del:hover { background:#fef2f2; }
+.ctag { font-size:11px; color:#16a34a; font-weight:700; opacity:0; transition:opacity .3s; }
+.ctag.show { opacity:1; }
+.cdel { display:flex; align-items:center; gap:8px; margin-top:8px; flex-wrap:wrap; background:#fef2f2; padding:8px 12px; border-radius:8px; }
+.cdel span { font-size:12px; color:#b91c1c; font-weight:600; }
+.eday { text-align:center; padding:28px; font-size:14px; color:var(--gray-400); }
+.fdiv { border-top:1.5px solid var(--gray-200); padding-top:18px; }
+.ftitle { font-size:14px; font-weight:700; color:var(--brand); margin-bottom:16px; }
+.frow { margin-bottom:14px; }
+.flbl { font-size:12px; font-weight:700; color:var(--brand); margin-bottom:6px; display:block; letter-spacing:.03em; }
+.izone { border:2px dashed var(--gray-200); border-radius:10px; padding:28px 16px; text-align:center; cursor:pointer; background:var(--gray-50); }
+.izone:hover, .izone.drag { border-color:var(--brand); background:var(--brand-l); }
+.izone p { font-size:13px; color:var(--brand); font-weight:600; margin-bottom:4px; }
+.izone span { font-size:11px; color:var(--gray-400); }
+.iprev-wrap { position:relative; }
+.iprev { width:100%; max-height:220px; object-fit:contain; border-radius:10px; display:block; background:var(--gray-100); }
+.irmv { position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
+.iload { font-size:12px; color:var(--brand); text-align:center; padding:16px; background:var(--brand-l); border-radius:8px; }
+.facts { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:16px; }
+.bsave { background:var(--brand); color:#fff; border:none; border-radius:10px; padding:11px 24px; font-size:14px; font-weight:700; cursor:pointer; transition:background .15s; }
+.bsave:hover { background:var(--brand-d); }
+.bsave:disabled { opacity:.6; cursor:not-allowed; }
+.bcanc { background:#fff; color:var(--brand); border:1.5px solid var(--brand); border-radius:10px; padding:10px 16px; font-size:13px; font-weight:600; cursor:pointer; }
+.bcanc:hover { background:var(--brand-l); }
+
 /* ── Kits ── */
 .kit-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--gray-200); border-radius: 10px; margin-bottom: 8px; background: #fff; }
 .kit-color { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
@@ -322,6 +404,7 @@ tbody tr:last-child td { border-bottom: none; }
       <button class="nav-tab" onclick="goPage('rh')">👥 RH / Interno</button>
       <button class="nav-tab" onclick="goPage('kits')">🎁 Kits Sazonais</button>
       <button class="nav-tab" onclick="goPage('dashboard')">📊 Dashboard</button>
+      <button class="nav-tab" onclick="goPage('planner')">📅 Planner</button>
       <button class="nav-tab" onclick="goPage('usuarios')">⚙ Usuários</button>
     </nav>
     <div class="rt-badge">
@@ -755,6 +838,40 @@ tbody tr:last-child td { border-bottom: none; }
   </div>
 </div>
 
+<!-- ══ PÁGINA: PLANNER ══ -->
+<div class="page" id="page-planner">
+  <div class="sec-header">
+    <div>
+      <h2>Planner de Publicações</h2>
+      <p style="font-size:13px;color:var(--gray-400);margin-top:2px;">Calendário editorial BrasilCard · <span id="pl-total-badge">0 publicações</span></p>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="sdot" style="animation:pu 1.5s ease infinite;" id="pl-sync-dot"></div>
+      <span style="font-size:11px;color:var(--gray-400);" id="pl-sync-label">Aguardando...</span>
+    </div>
+  </div>
+  <div id="pl-cal"></div>
+  <div style="margin-top:12px;">
+    <div class="legend">
+      <span class="legend-label">Canais:</span>
+      <div class="legend-item"><div class="ldot" style="background:#16a34a;"></div>WhatsApp</div>
+      <div class="legend-item"><div class="ldot" style="background:#831843;"></div>Instagram</div>
+      <div class="legend-item"><div class="ldot" style="background:#92400e;"></div>E-mail</div>
+      <div class="legend-item"><div class="ldot" style="background:#4c1d95;"></div>SMS</div>
+      <div class="legend-item"><div class="ldot" style="background:var(--brand);"></div>Outros</div>
+    </div>
+    <div class="legend" style="margin-top:6px;">
+      <span class="legend-label">Status:</span>
+      <div class="legend-item"><div class="ldot" style="background:#3b82f6;"></div>Agendada</div>
+      <div class="legend-item"><div class="ldot" style="background:#22c55e;"></div>Publicada</div>
+      <div class="legend-item"><div class="ldot" style="background:#eab308;"></div>Ajuste</div>
+      <div class="legend-item"><div class="ldot" style="background:#a855f7;"></div>Substituída</div>
+    </div>
+  </div>
+  <div id="pl-panel"></div>
+</div>
+<input type="file" id="pl-file-input" accept="image/*" style="display:none;">
+
 <!-- ══ MODAL DE DETALHES ══ -->
 <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
@@ -1156,6 +1273,7 @@ window.goPage = function(id) {
   document.querySelectorAll('.nav-tab').forEach(t=>{ if(t.getAttribute('onclick').includes("'"+id+"'")) t.classList.add('active'); });
   if(id==='dashboard') renderDashboard();
   if(id==='usuarios') renderUsuarios();
+  if(id==='planner') initPlanner();
 };
 
 // ═══════════════════════════════════════════════════
@@ -1829,8 +1947,198 @@ window.toggleView = function(prefix){
   S[prefix+'View']=isGrid?'list':'grid';
 };
 
-// Tecla ESC fecha modal
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// ═══════════════════════════════════════════════════
+// PLANNER — Calendário de Publicações
+// ═══════════════════════════════════════════════════
+const PL_BIN_API   = 'https://api.jsonbin.io/v3/b';
+const PL_IMGBB_API = 'https://api.imgbb.com/1/upload';
+const PL_KEY       = '$2a$10$he87Je/m7H.9FPubUAD4KOOGeIwTmtBt3/3me1EPK5Kq3/PQ9MQ9S';
+const PL_BIN_ID    = '69bd503fb7ec241ddc87bc0e';
+const PL_IMGBB_KEY = '346ab68a2a077f945897ff9367d48fad';
+const PL_DAYS    = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const PL_MONTHS  = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const PL_CHANNELS = ['WhatsApp','Instagram','E-mail','SMS','Outros'];
+const PL_STATUSES = [{val:'agendada',label:'📅 Agendada'},{val:'publicada',label:'✅ Publicada'},{val:'ajuste',label:'✏️ Ajuste'},{val:'substituida',label:'🔄 Substituída'}];
+
+let plAllPosts = {}, plPollTimer = null, plReady = false;
+let PLS = { year:new Date().getFullYear(), month:new Date().getMonth(), selectedDay:null, editingId:null, confirmDelete:null, uploadingImg:false, form:{title:'',channel:'WhatsApp',caption:'',status:'agendada',imageUrl:'',imageThumb:'',imageName:''} };
+
+function plGk(y,m,d){ return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
+function plEsc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function plBc(ch){ return {WhatsApp:'bw',Instagram:'bi','E-mail':'be',SMS:'bs'}[ch]||'bo'; }
+function plPc(ch){ return {WhatsApp:'pw',Instagram:'pi','E-mail':'pe',SMS:'ps'}[ch]||'po'; }
+function plPillClass(p){ const sc={agendada:'st-agendada',publicada:'st-publicada',ajuste:'st-ajuste',substituida:'st-substituida'}; return sc[p.status]||plPc(p.channel); }
+function plBadgeClass(s){ return {agendada:'st-agendada',publicada:'st-publicada',ajuste:'st-ajuste',substituida:'st-substituida'}[s]||''; }
+function plStatusLabel(s){ return {agendada:'📅 Agendada',publicada:'✅ Publicada',ajuste:'✏️ Ajuste',substituida:'🔄 Substituída'}[s]||s; }
+
+window.initPlanner = async function(){
+  if(plReady){ plRender(); return; }
+  const dot=document.getElementById('pl-sync-dot'), lbl=document.getElementById('pl-sync-label');
+  if(dot) dot.style.background='#eab308';
+  if(lbl) lbl.textContent='Carregando...';
+  try{
+    await plFetchData(); plReady=true;
+    if(dot) dot.style.background='#22c55e';
+    if(lbl) lbl.textContent='Em tempo real';
+    plRender(); plStartPolling();
+  }catch(e){
+    if(dot) dot.style.background='#ef4444';
+    if(lbl) lbl.textContent='Erro de conexão';
+  }
+};
+
+async function plFetchData(){
+  const res=await fetch(`${PL_BIN_API}/${PL_BIN_ID}/latest`,{headers:{'X-Master-Key':PL_KEY}});
+  if(!res.ok) throw new Error();
+  const data=await res.json();
+  plAllPosts=data.record.posts||{};
+}
+
+async function plSaveData(){
+  await fetch(`${PL_BIN_API}/${PL_BIN_ID}`,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':PL_KEY},body:JSON.stringify({posts:plAllPosts})});
+}
+
+function plStartPolling(){
+  if(plPollTimer) clearInterval(plPollTimer);
+  plPollTimer=setInterval(async()=>{ if(PLS.selectedDay!==null) return; try{await plFetchData();plRender();}catch(e){} },10000);
+}
+
+function plRenderCal(){
+  const {year,month}=PLS, today=new Date();
+  const firstDay=new Date(year,month,1).getDay(), total=new Date(year,month+1,0).getDate();
+  let h=`<div class="cal-nav"><button class="nbtn" onclick="plChMonth(-1)">&#8249;</button><h2>${PL_MONTHS[month]} ${year}</h2><button class="nbtn" onclick="plChMonth(1)">&#8250;</button></div><div class="cal-grid">`;
+  PL_DAYS.forEach(d=>{ h+=`<div class="clbl">${d}</div>`; });
+  for(let i=0;i<firstDay;i++) h+=`<div class="cday empty"></div>`;
+  for(let d=1;d<=total;d++){
+    const key=plGk(year,month,d), posts=plAllPosts[key]||[];
+    const isToday=today.getFullYear()===year&&today.getMonth()===month&&today.getDate()===d;
+    const cls='cday'+(isToday?' today':'')+(PLS.selectedDay===d?' sel':'');
+    let pills='';
+    if(posts.length>0){
+      const shown=posts.slice(0,2).map(p=>`<div class="ppill ${plPillClass(p)}">${plEsc(p.title||p.channel)}</div>`).join('');
+      const mais=posts.length>2?`<div class="mpill">+${posts.length-2} mais</div>`:'';
+      pills=`<div class="ppills">${shown}${mais}</div>`;
+    }
+    h+=`<div class="${cls}" onclick="plSelDay(${d})"><div class="dnum">${d}</div>${pills}</div>`;
+  }
+  return h+`</div>`;
+}
+
+function plRenderImgField(){
+  if(PLS.uploadingImg) return `<div class="iload">⏳ Enviando imagem... aguarde</div>`;
+  if(PLS.form.imageUrl) return `<div class="iprev-wrap"><img class="iprev" src="${PLS.form.imageThumb||PLS.form.imageUrl}" alt="preview"><button class="irmv" onclick="plRemoveImg()">✕</button></div><div style="font-size:11px;color:var(--gray-400);margin-top:4px;">✓ ${plEsc(PLS.form.imageName)}</div>`;
+  return `<div class="izone" id="pl-drop-zone" onclick="plOpenPicker()"><p>📷 Clique para escolher imagem</p><span>Alta resolução · JPG, PNG até 32MB</span></div>`;
+}
+
+function plRenderPanel(){
+  if(PLS.selectedDay===null) return '';
+  const {year,month,selectedDay}=PLS, key=plGk(year,month,selectedDay), posts=plAllPosts[key]||[], f=PLS.form;
+  const dateStr=`${selectedDay} de ${PL_MONTHS[month]} de ${year}`;
+  let postsHtml='';
+  if(!posts.length){ postsHtml=`<div class="eday">Nenhuma publicação neste dia.</div>`; }
+  else {
+    const cards=posts.map((p,i)=>{
+      const conf=PLS.confirmDelete===i, imgSrc=p.imageUrl||'', imgD=p.imageThumb||p.imageUrl||'';
+      return `<div class="pcard">
+        <div class="pcard-h"><div class="ptitle">${plEsc(p.title||'(sem título)')}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;"><span class="bdg ${plBc(p.channel)}">${plEsc(p.channel)}</span>${p.status?`<span class="sbadge ${plBadgeClass(p.status)}">${plStatusLabel(p.status)}</span>`:''}</div>
+        </div>
+        ${imgD?`<div class="pimg-wrap"><img src="${imgD}" alt="imagem" loading="lazy"></div>${imgSrc?`<a class="dl-btn" href="${imgSrc}" target="_blank" download>⬇ Baixar em alta resolução</a>`:``}`:''}
+        ${p.caption?`<div class="capbox">${plEsc(p.caption)}</div>`:''}
+        <div class="pacts">
+          ${p.caption?`<button class="abtn copy" onclick="plCopyCaption(${i},'${key}')">Copiar legenda</button><span class="ctag" id="plct-${i}">✓ copiado</span>`:''}
+          <button class="abtn" onclick="plEditPost(${i},'${key}')">Editar</button>
+          ${conf?`<div class="cdel"><span>Confirmar exclusão?</span><button class="abtn del" onclick="plDoDelete(${i},'${key}')">Sim</button><button class="abtn" onclick="plCancelDel()">Não</button></div>`:`<button class="abtn del" onclick="plAskDel(${i})">Excluir</button>`}
+        </div>
+      </div>`;
+    }).join('');
+    postsHtml=`<div class="psync"><div class="sdot" style="animation:pu 1.5s ease infinite;"></div>Dados em tempo real</div><div class="plist">${cards}</div>`;
+  }
+  const isEditing=PLS.editingId!==null;
+  const formHtml=`<div class="fdiv">
+    <div class="ftitle">${isEditing?'Editar publicação':'Nova publicação'}</div>
+    <div class="frow"><label class="flbl">Título</label><input type="text" id="pl-f-title" class="form-control" value="${plEsc(f.title)}" placeholder="Ex: Post conversão semana 2"></div>
+    <div class="frow"><label class="flbl">Canal</label><select id="pl-f-channel" class="form-control">${PL_CHANNELS.map(c=>`<option value="${c}"${f.channel===c?' selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="frow"><label class="flbl">Status</label><select id="pl-f-status" class="form-control">${PL_STATUSES.map(s=>`<option value="${s.val}"${f.status===s.val?' selected':''}>${s.label}</option>`).join('')}</select></div>
+    <div class="frow"><label class="flbl">Legenda</label><textarea id="pl-f-caption" class="form-control" placeholder="Cole a legenda aqui..." style="min-height:100px;resize:vertical;">${plEsc(f.caption)}</textarea></div>
+    <div class="frow"><label class="flbl">Imagem <span style="font-weight:400;color:var(--gray-400)">(alta resolução via ImgBB)</span></label>${plRenderImgField()}</div>
+    <div class="facts"><button class="bsave" onclick="plSavePost('${key}')" ${PLS.uploadingImg?'disabled':''}>${isEditing?'Salvar alterações':'Adicionar publicação'}</button>${isEditing?`<button class="bcanc" onclick="plCancelEdit()">Cancelar</button>`:''}</div>
+  </div>`;
+  return `<div class="panel"><div class="ph"><h3>${dateStr}</h3><button class="xbtn" onclick="plClosePanel()">✕</button></div>${postsHtml}${formHtml}</div>`;
+}
+
+function plUpdateTotal(){
+  const t=Object.values(plAllPosts).reduce((s,a)=>s+a.length,0);
+  const el=document.getElementById('pl-total-badge');
+  if(el) el.textContent=`${t} publicação${t!==1?'ões':''}`;
+}
+
+function plRender(){
+  const cal=document.getElementById('pl-cal'), pan=document.getElementById('pl-panel');
+  if(cal) cal.innerHTML=plRenderCal();
+  if(pan) pan.innerHTML=plRenderPanel();
+  plUpdateTotal(); plSetupDrop();
+}
+
+function plSetupDrop(){
+  const z=document.getElementById('pl-drop-zone'); if(!z) return;
+  z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('drag');});
+  z.addEventListener('dragleave',()=>z.classList.remove('drag'));
+  z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('drag');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/')) plHandleImg(f);});
+}
+
+window.plChMonth=function(d){ PLS.month+=d; if(PLS.month>11){PLS.month=0;PLS.year++;} if(PLS.month<0){PLS.month=11;PLS.year--;} PLS.selectedDay=null;PLS.editingId=null;PLS.confirmDelete=null; plRender(); };
+window.plSelDay=function(d){ PLS.selectedDay=d;PLS.editingId=null;PLS.confirmDelete=null; PLS.form={title:'',channel:'WhatsApp',caption:'',status:'agendada',imageUrl:'',imageThumb:'',imageName:''}; plRender(); setTimeout(()=>document.getElementById('pl-panel')?.scrollIntoView({behavior:'smooth',block:'nearest'}),60); };
+window.plClosePanel=function(){ PLS.selectedDay=null; plRender(); };
+window.plAskDel=function(i){ PLS.confirmDelete=i; plRender(); };
+window.plCancelDel=function(){ PLS.confirmDelete=null; plRender(); };
+window.plCancelEdit=function(){ PLS.editingId=null; PLS.form={title:'',channel:'WhatsApp',caption:'',status:'agendada',imageUrl:'',imageThumb:'',imageName:''}; plRender(); };
+window.plRemoveImg=function(){ PLS.form.imageUrl='';PLS.form.imageThumb='';PLS.form.imageName=''; plRender(); };
+window.plOpenPicker=function(){ const fi=document.getElementById('pl-file-input'); fi.value=''; fi.click(); };
+
+window.plSavePost=async function(key){
+  const title=(document.getElementById('pl-f-title')?.value||'').trim();
+  const caption=(document.getElementById('pl-f-caption')?.value||'').trim();
+  const channel=document.getElementById('pl-f-channel')?.value||PLS.form.channel||'WhatsApp';
+  const status=document.getElementById('pl-f-status')?.value||PLS.form.status||'agendada';
+  if(!title&&!caption){ const t=document.getElementById('pl-f-title'); if(t){t.style.borderColor='#ef4444';setTimeout(()=>t.style.borderColor='',1500);} return; }
+  const btn=document.querySelector('#pl-panel .bsave'); if(btn){btn.disabled=true;btn.textContent='Salvando...';}
+  const post={title,channel,caption,status,imageUrl:PLS.form.imageUrl||'',imageThumb:PLS.form.imageThumb||'',imageName:PLS.form.imageName||'',ts:Date.now()};
+  if(!plAllPosts[key]) plAllPosts[key]=[];
+  if(PLS.editingId!==null){plAllPosts[key][PLS.editingId]=post;PLS.editingId=null;} else {plAllPosts[key].push(post);}
+  try{await plSaveData();}catch(e){alert('Erro ao salvar: '+e.message);}
+  PLS.form={title:'',channel:'WhatsApp',caption:'',status:'agendada',imageUrl:'',imageThumb:'',imageName:''};PLS.editingId=null;
+  plRender();
+};
+
+window.plEditPost=function(i,key){ const p=(plAllPosts[key]||[])[i]; if(!p) return; PLS.editingId=i;PLS.confirmDelete=null; PLS.form={title:p.title||'',channel:p.channel||'WhatsApp',caption:p.caption||'',status:p.status||'agendada',imageUrl:p.imageUrl||'',imageThumb:p.imageThumb||'',imageName:p.imageName||''}; plRender(); setTimeout(()=>document.getElementById('pl-f-title')?.focus(),80); };
+
+window.plDoDelete=async function(i,key){ (plAllPosts[key]||[]).splice(i,1); if(!plAllPosts[key]?.length) delete plAllPosts[key]; PLS.confirmDelete=null;PLS.editingId=null; try{await plSaveData();}catch(e){alert('Erro: '+e.message);} plRender(); };
+
+window.plCopyCaption=function(i,key){ const cap=(plAllPosts[key]||[])[i]?.caption; if(!cap) return; const fb=()=>{const ta=document.createElement('textarea');ta.value=cap;ta.style.cssText='position:fixed;opacity:0;';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);plShowCopied(i);}; if(navigator.clipboard) navigator.clipboard.writeText(cap).then(()=>plShowCopied(i)).catch(fb); else fb(); };
+function plShowCopied(i){ const el=document.getElementById(`plct-${i}`); if(el){el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800);} }
+
+async function plHandleImg(file){
+  PLS.uploadingImg=true; plRender();
+  try{
+    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});
+    const form=new FormData();
+    form.append('key',PL_IMGBB_KEY);form.append('image',b64);form.append('name',file.name.replace(/\.[^.]+$/,'')+'_brasilcard');
+    const response=await fetch(PL_IMGBB_API,{method:'POST',body:form});
+    if(!response.ok) throw new Error('ImgBB '+response.status);
+    const data=await response.json();
+    if(!data.success) throw new Error('upload falhou');
+    PLS.form.imageUrl=data.data.url;PLS.form.imageThumb=data.data.display_url||data.data.url;PLS.form.imageName=file.name;
+  }catch(e){alert('Erro ao enviar imagem: '+e.message);}
+  PLS.uploadingImg=false; plRender();
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  const fi=document.getElementById('pl-file-input');
+  if(fi) fi.addEventListener('change',e=>{const f=e.target.files[0];if(f) plHandleImg(f);});
+});
+
 </script>
 </body>
 </html>
