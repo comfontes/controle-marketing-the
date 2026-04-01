@@ -4,7 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calendário de Comunicação — RH GAC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* Aptos font stack — usa a fonte do sistema se disponível, senão fallback limpo */
+    @font-face {
+      font-family: 'Aptos';
+      src: local('Aptos'), local('Aptos-Regular');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Aptos';
+      src: local('Aptos Bold'), local('Aptos-Bold');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'Aptos Black';
+      src: local('Aptos Black'), local('Aptos-Black');
+      font-weight: 900;
+    }
+  </style>
   <style>
     :root {
       /* Primária: azul-marinho GAC */
@@ -34,6 +51,9 @@
       --geral:         #b8922a;
       --geral-bg:      rgba(184,146,42,0.10);
       --geral-border:  rgba(184,146,42,0.70);
+      --linkedin:      #0077b5;
+      --linkedin-bg:   rgba(0,119,181,0.10);
+      --linkedin-border: rgba(0,119,181,0.70);
       /* Misc */
       --border:        rgba(26,58,106,0.12);
       --border-strong: rgba(26,58,106,0.20);
@@ -46,7 +66,7 @@
 
     html, body { height: 100%; overflow: hidden; }
     body {
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
       display: flex;
@@ -76,7 +96,7 @@
       background: var(--gold);
       border-radius: 7px;
       display: flex; align-items: center; justify-content: center;
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-weight: 700;
       font-size: 12px;
       color: var(--primary-dark);
@@ -86,7 +106,7 @@
     }
     .header-title-block { display: flex; flex-direction: column; }
     .header-title {
-      font-family: "Playfair Display", serif;
+      font-family: "Aptos Black", "Segoe UI Black", sans-serif; font-weight: 900;
       font-weight: 700;
       font-size: 14px;
       color: #ffffff;
@@ -123,7 +143,7 @@
       border: none;
       border-radius: 7px;
       padding: 7px 15px;
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-weight: 700;
       font-size: 12px;
       cursor: pointer;
@@ -152,7 +172,7 @@
     }
     .btn-nav:hover { background: rgba(255,255,255,0.20); }
     .month-label {
-      font-family: "Playfair Display", serif;
+      font-family: "Aptos Black", "Segoe UI Black", sans-serif; font-weight: 900;
       font-weight: 600;
       font-size: 13px;
       min-width: 148px;
@@ -187,7 +207,7 @@
       margin-bottom: 10px;
     }
     .sidebar-calendar-title .cal-title {
-      font-family: "Playfair Display", serif;
+      font-family: "Aptos Black", "Segoe UI Black", sans-serif; font-weight: 900;
       font-weight: 700;
       font-size: 13px;
       color: var(--primary);
@@ -217,7 +237,7 @@
       border: none;
       background: transparent;
       color: var(--text-muted);
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-size: 12.5px;
       font-weight: 500;
       cursor: pointer;
@@ -230,11 +250,13 @@
     .sidebar-btn.active.rep  { background: var(--rep-bg);  color: var(--rep);  font-weight: 600; border-left: 3px solid var(--rep); }
     .sidebar-btn.active.endo { background: var(--endo-bg); color: var(--endo); font-weight: 600; border-left: 3px solid var(--endo); }
     .sidebar-btn.active.geral{ background: var(--geral-bg);color: var(--geral);font-weight: 600; border-left: 3px solid var(--geral); }
+    .sidebar-btn.active.linkedin { background: var(--linkedin-bg); color: var(--linkedin); font-weight: 600; border-left: 3px solid var(--linkedin); }
     .sidebar-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .sidebar-dot.all   { background: rgba(26,58,106,0.30); }
     .sidebar-dot.rep   { background: var(--rep); }
     .sidebar-dot.endo  { background: var(--endo); }
     .sidebar-dot.geral { background: var(--geral); }
+    .sidebar-dot.linkedin { background: var(--linkedin); }
     .sidebar-count {
       margin-left: auto;
       font-size: 10px;
@@ -302,7 +324,7 @@
       background: rgba(26,58,106,0.04);
     }
     .day-number {
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-weight: 600;
       font-size: 12px;
       color: var(--text-muted);
@@ -340,6 +362,7 @@
     .event-pill.rep  { background: var(--rep-bg);  color: var(--rep);  border-left: 2.5px solid var(--rep); }
     .event-pill.endo { background: var(--endo-bg); color: var(--endo); border-left: 2.5px solid var(--endo); }
     .event-pill.geral{ background: var(--geral-bg);color: #7a5c10;     border-left: 2.5px solid var(--geral);}
+    .event-pill.linkedin { background: var(--linkedin-bg); color: var(--linkedin); border-left: 2.5px solid var(--linkedin); }
     .more-badge { font-size: 9px; color: var(--text-light); padding: 1px 0; flex-shrink: 0; }
 
     /* ─── MODAL ──────────────────────────────────── */
@@ -379,7 +402,7 @@
       border-bottom: 1px solid var(--border);
     }
     .modal-title {
-      font-family: "Playfair Display", serif;
+      font-family: "Aptos Black", "Segoe UI Black", sans-serif; font-weight: 900;
       font-weight: 700;
       font-size: 17px;
       color: var(--primary);
@@ -409,7 +432,7 @@
       border: 1px solid var(--border-strong);
       border-radius: 7px;
       color: var(--text);
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-size: 13px;
       font-weight: 400;
       padding: 9px 12px;
@@ -443,6 +466,7 @@
     .group-opt.rep.selected  { border-color: var(--rep);  background: var(--rep-bg);  color: var(--rep);  font-weight: 700; }
     .group-opt.endo.selected { border-color: var(--endo); background: var(--endo-bg); color: var(--endo); font-weight: 700; }
     .group-opt.geral.selected{ border-color: var(--geral);background: var(--geral-bg);color: #7a5c10;     font-weight: 700; }
+    .group-opt.linkedin.selected { border-color: var(--linkedin); background: var(--linkedin-bg); color: var(--linkedin); font-weight: 700; }
 
     /* Image upload */
     .upload-area {
@@ -483,7 +507,7 @@
       color: var(--text);
       border-radius: 7px;
       padding: 8px 16px;
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-size: 13px;
       cursor: pointer;
       transition: background 0.15s;
@@ -495,13 +519,24 @@
       color: #ffffff;
       border-radius: 7px;
       padding: 8px 22px;
-      font-family: "Outfit", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       font-weight: 700;
       font-size: 13px;
       cursor: pointer;
       transition: background 0.15s;
     }
     .btn-primary:hover { background: var(--primary-mid); }
+    .btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }
+    .btn-primary .spinner-inline {
+      display: inline-block;
+      width: 12px; height: 12px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
     .btn-danger {
       background: rgba(192,57,43,0.07);
       border: 1px solid rgba(192,57,43,0.35);
@@ -528,8 +563,9 @@
     .detail-group-badge.rep  { background: var(--rep-bg);  color: var(--rep); }
     .detail-group-badge.endo { background: var(--endo-bg); color: var(--endo); }
     .detail-group-badge.geral{ background: var(--geral-bg);color: #7a5c10; }
+    .detail-group-badge.linkedin { background: var(--linkedin-bg); color: var(--linkedin); }
     .detail-title {
-      font-family: "Playfair Display", serif;
+      font-family: "Aptos Black", "Segoe UI Black", sans-serif; font-weight: 900;
       font-size: 20px;
       font-weight: 700;
       color: var(--primary);
@@ -683,6 +719,11 @@
       Demandas Gerais
       <span class="sidebar-count" id="countGeral">0</span>
     </button>
+    <button class="sidebar-btn linkedin" id="sideLinkedin" onclick="setFilter('linkedin')">
+      <span class="sidebar-dot linkedin"></span>
+      LinkedIn
+      <span class="sidebar-count" id="countLinkedin">0</span>
+    </button>
   </aside>
 
   <!-- Calendar -->
@@ -712,9 +753,10 @@
     <div class="form-group">
       <label class="form-label">Grupo</label>
       <div class="group-selector">
-        <div class="group-opt rep"  id="optRep"  onclick="selectGroup('rep')">👥 Representantes</div>
         <div class="group-opt endo" id="optEndo" onclick="selectGroup('endo')">📣 Endomarketing</div>
+        <div class="group-opt rep"  id="optRep"  onclick="selectGroup('rep')">👥 Representantes</div>
         <div class="group-opt geral" id="optGeral" onclick="selectGroup('geral')">📋 Demandas Gerais</div>
+        <div class="group-opt linkedin" id="optLinkedin" onclick="selectGroup('linkedin')">💼 LinkedIn</div>
       </div>
     </div>
 
@@ -877,6 +919,9 @@
     const errDiv      = document.getElementById("uploadError");
     const btnRemove   = document.getElementById("btnRemoveImage");
 
+      const btnSave = document.querySelector("[onclick=\"saveEvent()\"]");
+      if (btnSave) { btnSave.disabled = true; btnSave.innerHTML = '<span class="spinner-inline"></span> Enviando imagem...'; }
+
     errDiv.style.display = "none";
     area.classList.add("uploading");
     placeholder.style.display = "none";
@@ -911,6 +956,8 @@
     } finally {
       area.classList.remove("uploading");
       input.value = "";
+      const btnSave = document.querySelector("[onclick=\"saveEvent()\"]");
+      if (btnSave) { btnSave.disabled = false; btnSave.innerHTML = "Salvar"; }
     }
   };
 
@@ -956,6 +1003,7 @@
     document.getElementById("countRep").textContent   = events.filter(e => e.group === "rep").length;
     document.getElementById("countEndo").textContent  = events.filter(e => e.group === "endo").length;
     document.getElementById("countGeral").textContent = events.filter(e => e.group === "geral").length;
+    document.getElementById("countLinkedin").textContent = events.filter(e => e.group === "linkedin").length;
     document.getElementById("headerCount").textContent = events.length;
   }
 
@@ -1050,7 +1098,7 @@
   window.selectGroup = function(g) { selectedGroup = g; updateGroupUI(); };
 
   function updateGroupUI() {
-    ["rep","endo","geral"].forEach(g => {
+    ["rep","endo","geral","linkedin"].forEach(g => {
       document.getElementById("opt" + g.charAt(0).toUpperCase() + g.slice(1))
         .classList.toggle("selected", selectedGroup === g);
     });
@@ -1072,19 +1120,29 @@
       caption: document.getElementById("fCaption").value.trim(),
     };
 
+    const wasEditing = !!editingId;
+
+    // Salva localmente primeiro
     if (editingId) {
       const idx = events.findIndex(e => e.id === editingId);
       if (idx !== -1) events[idx] = { ...events[idx], ...payload };
-      showToast("Publicação atualizada!");
     } else {
       payload.id = Date.now().toString(36) + Math.random().toString(36).slice(2);
       events.push(payload);
-      showToast("Publicação criada!");
     }
-    await saveEvents();
+
+    // Atualiza UI imediatamente
     closeFormModal();
     renderCalendar();
     updateSidebarCounts();
+    showToast(wasEditing ? "Publicação atualizada!" : "Publicação criada!");
+
+    // Sincroniza com JSONBin em segundo plano
+    try {
+      await saveEvents();
+    } catch(e) {
+      showToast("Salvo localmente. Erro ao sincronizar.");
+    }
   };
 
   window.deleteEvent = async function() {
@@ -1107,6 +1165,7 @@
 
     const groupLabel = ev.group === "rep"  ? "👥 Representantes"
                      : ev.group === "endo" ? "📣 Endomarketing"
+                     : ev.group === "linkedin" ? "💼 LinkedIn"
                      : "📋 Demandas Gerais";
     const gc = ev.group;
 
@@ -1161,7 +1220,7 @@
   window.setFilter = function(f) {
     activeFilter = f;
     document.querySelectorAll(".sidebar-btn").forEach(b => b.classList.remove("active"));
-    const idMap = { all: "sideAll", rep: "sideRep", endo: "sideEndo", geral: "sideGeral" };
+    const idMap = { all: "sideAll", rep: "sideRep", endo: "sideEndo", geral: "sideGeral", linkedin: "sideLinkedin" };
     document.getElementById(idMap[f]).classList.add("active");
     renderCalendar();
   };
